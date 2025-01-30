@@ -33,6 +33,42 @@ app.get('/generate-qr', async (req, res) => {
       locality: 'Bern',
       postalCode: '3000',
     },
+    billInformation: {
+        documentNumber: "INV-202401",
+        documentDate: "2024-01-30",
+        customerReference: "CUST-123456",
+        vatNumber: "CHE-123.456.789 MWST",
+        vatDate: {
+          start: "2024-01-01",
+          end: "2024-01-31",
+        },
+        vat: [
+          {
+            rate: 7.7,
+            netAmount: 500.00,
+          },
+          {
+            rate: 2.5,
+            netAmount: 200.00,
+          },
+        ],
+        vatImportTax: [
+          {
+            rate: 7.7,
+            vatAmount: 38.50,
+          },
+        ],
+        paymentTerms: [
+          {
+            days: 30,
+            cashDiscountPercent: 2.0,
+          },
+          {
+            days: 60,
+            cashDiscountPercent: 0.0,
+          },
+        ],
+      },
 
     unstructuredMessage: 'Invoice 202401', // Additional payment information
     language: BbitQRBillLanguage.EN, // Language of the QR bill
